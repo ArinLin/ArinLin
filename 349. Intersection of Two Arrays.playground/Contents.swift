@@ -15,6 +15,28 @@ import UIKit
 //print(Set(emptyArr))
 //print(res)
 
+// solution with dict
+func intersectionMap(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+    var dict: [Int:Int] = [:]
+    var res = [Int]()
+    
+    for i in nums1 {
+        if let d = dict[i] {
+            dict[i] = d + 1
+        } else {
+            dict[i] = 1
+        }
+    }
+    
+    
+    for i in nums2 {
+        if dict[i] != nil {
+            res.append(i)
+        }
+    }
+    return Array(Set(res))
+}
+
 
 // 350. Intersection of Two Arrays II
 
