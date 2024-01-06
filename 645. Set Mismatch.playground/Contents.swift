@@ -22,3 +22,31 @@ for n in 1...nums.count{
     }
 }
 print(missing)
+
+// map solution
+func findErrorNums(_ nums: [Int]) -> [Int] {
+    var dict: [Int:Int] = [:]
+    var res = [Int]()
+    
+    for n in nums {
+        if let d = dict[n] {
+            dict[n] = d + 1
+        } else {
+            dict[n] = 1
+        }
+    }
+    
+    for (k, v) in dict {
+        if v > 1 {
+            res.append(k)
+        }
+    }
+    
+    for i in 1...nums.count {
+        if dict[i] == nil {
+            res.append(i)
+        }
+    }
+    
+    return res
+}
